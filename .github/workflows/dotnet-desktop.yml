@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        target: [windows-latest]
+        target: [windows-latest, ubuntu-latest]
         buildConfig: [Release]
         include:
           - buildConfig: Release
@@ -24,6 +24,11 @@ jobs:
             artifact_name: winBuild.exe
             asset_name: windows-x64
             runtime: win-x64
+          - target: ubuntu-latest
+            os: ubuntu-latest
+            artifact_name: ubuntuBuild
+            asset_name: linux-x64
+            runtime: linux-x64
     
     steps:
      # Checkout the repo
