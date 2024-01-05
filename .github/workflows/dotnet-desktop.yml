@@ -1,0 +1,61 @@
+name: .NET Publish
+
+on:
+  push:
+    tags:
+      - '*'
+
+env:
+   PROJECT_ROOT: ./
+   DOTNET_VERSION: '6.0.x'
+
+jobs: 
+  publish:
+    name: Publish for ${{ matrix.target }} for ${{ matrix.buildConfig }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        target: [ubuntu-latest, windows-latest, macos-latest, alpine-latest]
+        buildConfig: [Debug, Release]
+        include:
+          - buildConfig: Debug
+            buildSuffix: _Debug
+          - buildConfig: Release
+          - target: ubuntu-latest
+            os: ubuntu-latest
+            artifact_name: ubuntuBuild
+            asset_name: linux-x64
+            runtime: linux-x64
+          - target: windows-latest
+            os: windows-latest
+            artifact_name: winBuild.exe
+            asset_name: windows-x64
+            runtime: win-x64
+    
+    steps:
+     # Checkout the repo
+     - uses: actions/checkout@v2
+    
+     # Setup .NET Core SDK
+     - name: Setup .NET Core
+       uses: actions/setup-dotnet@v1
+       with:
+         dotnet-version: ${{ env.DOTNET_VERSION }}
+      
+     - name: dotnet publish
+       run: dotnet publish --self-contained true --runtime ${{ matrix.runtime}} -c ${{ matrix.buildConfig }} -o target/release/${{ matrix.artifact_name }}${{ matrix.buildSuffix }} ${{ env.PROJECT_ROOT }}
+
+     - name: Zip build
+       uses: thedoctor0/zip-release@main
+       with:
+         path: target/release/${{ matrix.artifact_name }}${{ matrix.buildSuffix }}
+         type: zip
+         filename: target/release/${{ matrix.artifact_name }}${{ matrix.buildSuffix }}.zip
+
+     - name: Upload binaries to release
+       uses: svenstaro/upload-release-action@v2
+       with:
+         repo_token: ${{ secrets.GITHUB_TOKEN }}
+         file: target/release/${{ matrix.artifact_name }}${{ matrix.buildSuffix }}.zip
+         asset_name: ${{ matrix.asset_name }}${{ matrix.buildSuffix }}.zip
+         tag: ${{ github.ref }}
