@@ -22,7 +22,7 @@ cw_cli source output
 		{
 			try
 			{
-				Core(args);
+				System.Console.WriteLine("Fuck Yeah");
 				Environment.ExitCode = 0;
 			}
 			catch (ConsoleArgumentException)
