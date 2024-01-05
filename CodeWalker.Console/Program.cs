@@ -1,28 +1,19 @@
 ﻿using CodeWalker.GameFiles;
 using System;
-using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using System.Linq;
-using System.Numerics;
 
 namespace CodeWalker.Console
 {
 	internal class Program
 	{
-
-		const string USAGE =
-		#region USAGE
-@"Usage:
-cw_cli source output
-";
-		#endregion
-
 		private static void Main(string[] args)
 		{
 			try
 			{
-				YdtFile file = XmlYtd.GetYtd("", "");
+				string content = File.ReadAllText(args[1]);
+				YtdFile file = XmlYtd.GetYtd(content, "");
+				byte[] outputBytes = file.Save();
+				File.WriteAllBytes(args[2], outputBytes);
 				Environment.ExitCode = 0;
 			}
 			catch (ConsoleArgumentException)
