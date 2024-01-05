@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWalker.RPFExplorer", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWalker.Vehicles", "CodeWalker.Vehicles\CodeWalker.Vehicles.csproj", "{F5A776B0-2F1A-4C36-87B3-86206AC4B439}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWalker.Console", "CodeWalker.Console\CodeWalker.Console.csproj", "{FFA776B0-2F1A-4C36-87B3-86206AC4B440}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
