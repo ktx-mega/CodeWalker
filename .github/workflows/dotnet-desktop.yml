@@ -21,11 +21,6 @@ jobs:
           - buildConfig: Debug
             buildSuffix: _Debug
           - buildConfig: Release
-          - target: ubuntu-latest
-            os: ubuntu-latest
-            artifact_name: ubuntuBuild
-            asset_name: linux-x64
-            runtime: linux-x64
           - target: windows-latest
             os: windows-latest
             artifact_name: winBuild.exe
