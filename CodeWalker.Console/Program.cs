@@ -1,4 +1,4 @@
-﻿using CodeWalker.GameFiles.ResourceBuilder;
+﻿using CodeWalker.GameFiles;
 using System;
 using System.Collections.Generic;
 using System.Data;
