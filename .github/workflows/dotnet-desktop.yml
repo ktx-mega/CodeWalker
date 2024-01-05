@@ -43,7 +43,7 @@ jobs:
          dotnet-version: ${{ env.DOTNET_VERSION }}
       
      - name: dotnet publish
-       run: dotnet publish --self-contained true --runtime ${{ matrix.runtime}} -c ${{ matrix.buildConfig }} -o target/release/${{ matrix.artifact_name }}${{ matrix.buildSuffix }} ${{ env.PROJECT_ROOT }}
+       run: dotnet publish --self-contained true --runtime ${{ matrix.runtime}} -c ${{ matrix.buildConfig }} -o target/release/${{ matrix.artifact_name }}${{ matrix.buildSuffix }} ./CodeWalker.Console
 
      - name: Zip build
        uses: thedoctor0/zip-release@main
