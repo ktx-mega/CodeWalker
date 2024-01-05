@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        target: [windows-latest]
+        target: [windows-latest, ubuntu-latest]
         buildConfig: [Debug, Release]
         include:
           - buildConfig: Debug
