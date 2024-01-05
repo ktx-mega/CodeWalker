@@ -16,11 +16,10 @@ jobs:
     strategy:
       matrix:
         target: [windows-latest]
-        buildConfig: [Debug, Release]
+        buildConfig: [Release]
         include:
-          - buildConfig: Debug
-            buildSuffix: _Debug
           - buildConfig: Release
+            buildSuffix: _Release
           - target: windows-latest
             os: windows-latest
             artifact_name: winBuild.exe
