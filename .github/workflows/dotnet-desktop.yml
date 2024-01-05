@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        target: [windows-latest, ubuntu-latest]
+        target: [windows-latest, ubuntu-latest, macos-latest]
         buildConfig: [Release]
         include:
           - buildConfig: Release
@@ -29,6 +29,11 @@ jobs:
             artifact_name: ubuntuBuild
             asset_name: linux-x64
             runtime: linux-x64
+          - target: macos-latest
+            os: macos-latest
+            artifact_name: macosBuild
+            asset_name: macos-x64
+            runtime: osx-x64
     
     steps:
      # Checkout the repo
