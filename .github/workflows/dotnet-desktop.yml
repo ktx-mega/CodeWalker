@@ -16,16 +16,9 @@ jobs:
     strategy:
       matrix:
         target: [windows-latest]
-        buildConfig: [Debug, Release]
+        buildConfig: [Release]
         include:
-          - buildConfig: Debug
-            buildSuffix: _Debug
           - buildConfig: Release
-          - target: ubuntu-latest
-            os: ubuntu-latest
-            artifact_name: ubuntuBuild
-            asset_name: linux-x64
-            runtime: linux-x64
           - target: windows-latest
             os: windows-latest
             artifact_name: winBuild.exe
@@ -43,7 +36,7 @@ jobs:
          dotnet-version: ${{ env.DOTNET_VERSION }}
       
      - name: dotnet publish
-       run: dotnet publish --self-contained true --runtime ${{ matrix.runtime}} -c ${{ matrix.buildConfig }} -o target/release/${{ matrix.artifact_name }}${{ matrix.buildSuffix }} ./CodeWalker.Console
+       run: dotnet publish --self-contained true --runtime ${{ matrix.runtime}} -c ${{ matrix.buildConfig }} -o target/release/${{ matrix.artifact_name }} ./
 
      - name: Zip build
        uses: thedoctor0/zip-release@main
