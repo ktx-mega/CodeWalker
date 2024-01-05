@@ -22,7 +22,7 @@ cw_cli source output
 		{
 			try
 			{
-				Core(args);
+				YdtFile file = XmlYtd.GetYtd("", "")
 				Environment.ExitCode = 0;
 			}
 			catch (ConsoleArgumentException)
