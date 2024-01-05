@@ -5,8 +5,6 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>annotations</Nullable>
-    <BaseOutputPath>$(SolutionDir)/build/bin</BaseOutputPath>
-    <BaseIntermediateOutputPath>$(SolutionDir)/build/obj</BaseIntermediateOutputPath>
     <Configurations>Debug;Release;Debug_And_Release;Debug and deploy debug to unity</Configurations>
     <StartupObject></StartupObject>
     <IsPublishable>True</IsPublishable>
