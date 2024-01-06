@@ -11,7 +11,7 @@ namespace CodeWalker.Console
 			try
 			{
 				string content = File.ReadAllText(args[0]);
-				YtdFile file = XmlYtd.GetYtd(content, "");
+				YcdFile file = XmlYcd.GetYcd(content);
 				byte[] outputBytes = file.Save();
 				File.WriteAllBytes(args[1], outputBytes);
 				Environment.ExitCode = 0;
